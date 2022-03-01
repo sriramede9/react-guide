@@ -3,6 +3,7 @@ import Card from "../UI/Card";
 
 function Expenses(props){
 
+
     return (      <Card><ExpenseItem
         title={props.expenses[0].title}
         amount={props.expenses[0].amount}

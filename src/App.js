@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
 
 import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 function App() {
   const expenses = [
@@ -24,10 +25,17 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
+
+  const addToExpenses = (expenseData) => {
+    console.log(expenseData);
+    expenses.push(expenseData);
+    console.log(expenses);
+  };
+
   return (
     <div>
-      <h2>Hello React!!!!</h2>
-    <Expenses expenses = {expenses} />
+      <NewExpense addExpense={addToExpenses} />
+      <Expenses expenses={expenses} />
     </div>
   );
 }
