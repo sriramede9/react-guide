@@ -2,6 +2,7 @@
 
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
+import React, { useState } from "react";
 
 function App() {
   const expenses = [
@@ -26,16 +27,21 @@ function App() {
     },
   ];
 
+  const [expensesUpdated, setExpensesUpdated] = useState(expenses);
+
   const addToExpenses = (expenseData) => {
-    console.log(expenseData);
-    expenses.push(expenseData);
-    console.log(expenses);
+    // expenses.push(expenseData);
+    // setExpensesUpdated([expenseData,...expenses]);
+    setExpensesUpdated((previousExpenses) => [
+      expenseData,
+      ...previousExpenses,
+    ]);
   };
 
   return (
     <div>
       <NewExpense addExpense={addToExpenses} />
-      <Expenses expenses={expenses} />
+      <Expenses expenses={expensesUpdated} />
     </div>
   );
 }
