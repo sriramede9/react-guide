@@ -2,8 +2,6 @@ import "./ExpenseForm .css";
 
 import React, { useState } from "react";
 
-import AddExpenseButton from "../Expenses/AddExpenseButton";
-
 const ExpenseForm = (props) => {
   // const [enteredTitle,setEnteredTitle] = useState('');
   // const [enteredAmount,setEnteredAmount] = useState('');
@@ -46,21 +44,12 @@ const ExpenseForm = (props) => {
       date: new Date(userInput.enteredDate),
     };
 
-    // console.log(expenseData);
-
     props.onSaveExpenseData(expenseData);
 
     setUserInput({ enteredTitle: "", enteredAmount: "", enteredDate: "" });
   };
 
   const [showExpenseForm, setshowExpenseForm] = useState(true);
-
-  const showAddExpenseButton = (event) => {
-    console.log("cancel event");
-    setshowExpenseForm(false);
-    // props.onCancel = true;
-    // props.toggleExpenseForm(event);
-  };
 
   let expensesForm = (
     <form onSubmit={submitHandler}>
@@ -95,24 +84,22 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
-        <button onClick={showAddExpenseButton}>Cancel</button>
+        <button onClick={props.onCancel}>Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
   );
 
-  const toggleExpenseForm = (expenseFormStatus) => {
-    console.log("inside toggle expense form", expenseFormStatus);
-    setshowExpenseForm(expenseFormStatus);
-
+  const setExpenseFormTrue = () => {
+    setshowExpenseForm(true);
   };
 
   return (
     <div>
       {showExpenseForm && expensesForm}
-      {!showExpenseForm && (
-        <AddExpenseButton onToggleExpenseForm={toggleExpenseForm} />
-      )}
+      {/* {!showExpenseForm && (
+        <button onClick={setExpenseFormTrue}>Add New Expense </button>
+      )} */}
     </div>
   );
 };
