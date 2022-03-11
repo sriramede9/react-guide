@@ -20,6 +20,7 @@ function ExpenseItem(props) {
   // }
 
   return (
+    <ul>
     <Card className="expense-item">
       <ExpenseDate date={props.date}></ExpenseDate>
       <div className="expense-item__description">
@@ -28,6 +29,7 @@ function ExpenseItem(props) {
       </div>
       {/* <button onClick={clickHandler2}>{title}</button> */}
     </Card>
+    </ul>
   );
 }
 
